@@ -1,0 +1,6 @@
+@Metals_HostAddress = http://localhost:5161
+
+GET {{Metals_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
