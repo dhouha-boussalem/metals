@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Metals")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+665f063f72cc8b457b10aa68e360834a0b55a2b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4be7e94b40a2c2d9b5101f50b7f5aaa8c868f7b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Metals")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Metals")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
