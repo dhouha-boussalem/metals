@@ -10,7 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include=".github\workflows\dotnet.yml" />
+    <Compile Remove=".github\**" />
+    <Compile Remove="Tests\**" />
+    <Content Remove=".github\**" />
+    <Content Remove="Tests\**" />
+    <EmbeddedResource Remove=".github\**" />
+    <EmbeddedResource Remove="Tests\**" />
+    <None Remove=".github\**" />
+    <None Remove="Tests\**" />
   </ItemGroup>
 
   <ItemGroup>
