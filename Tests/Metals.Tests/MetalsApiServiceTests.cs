@@ -1,18 +1,27 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using Moq;
+using RichardSzalay.MockHttp;
+using Xunit;
 
 namespace Metals2.Tests
 {
-    public class MetalsApiServiceTestsToChange
+    public class MetalsApiServiceTests
     {
         [Fact]
         public async Task GetGoldPriceAsync_ReturnsValue_WhenApiResponseIsValid()
         {
             // Arrange
-            var httpMessageHandlerMock = new Mock<HttpMessageHandler>();
-            var httpClient = new HttpClient(httpMessageHandlerMock.Object);
+            var mockHttp = new MockHttpMessageHandler();
+
+            var jsonResponse = @"{
+                ""rates"": { ""XAU"": 2345.67 }
+            }";
+
+            mockHttp.When("https://metals-api.com/api/latest*")
+                    .Respond("application/json", jsonResponse);
+
+            var httpClient = new HttpClient(mockHttp);
 
             var inMemorySettings = new Dictionary<string, string> {
                 {"MetalsApi:ApiKey", "test-key"}
@@ -23,15 +32,11 @@ namespace Metals2.Tests
 
             var service = new MetalsApiService(httpClient, configuration);
 
-            // Ici, tu devrais mocker la réponse HTTP pour simuler l'API.
-            // Pour un test complet, utilise un framework comme RichardSzalay.MockHttp.
-
             // Act
             var result = await service.GetGoldPriceAsync();
 
             // Assert
-            // Remplace par une assertion adaptée à ton mock
-            Assert.Null(result);
+            Assert.Equal(2345.67m, result);
         }
     }
 }
